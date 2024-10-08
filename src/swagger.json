@@ -1,0 +1,209 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API USERS AND DOCUMENTS",
+    "description": "Criação de usuários e seus respectivos documentos",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "summary": "Cadastro de usuários",
+        "description": "Rota para criação de usuários",
+        "tags": ["Users"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created"
+          }
+        }
+      },
+      "get": {
+        "summary": "Lista todos os usuários",
+        "description": "Rota para listar todos os usuários",
+        "tags": ["Users"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/User"  
+                }            
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "put": {
+        "summary": "Edita um usuário",
+        "description": "Rota para editar um usário",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Nome do usuário pelo ID",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {}
+        }
+      },
+      "delete": {
+        "summary": "Deleta um usuário",
+        "description": "Rota para deletar um usário",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Nome do usuário pelo ID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {}
+        }
+      }
+    },
+    "/documents": {
+      "post": {
+        "summary": "Cadastro de documentos",
+        "description": "Rota para criação de documentos",
+        "tags": ["Documents"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Document"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Document created"
+          }
+        }
+      },
+      "get": {
+        "summary": "Lista todos os documentos",
+        "description": "Rota para listar todos os documentos",
+        "tags": ["Documents"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Document"  
+                }            
+              }
+            }
+          }
+        }
+      }
+    },
+    "/documents/{id}": {
+      "put": {
+        "summary": "Edita um documento",
+        "description": "Rota para editar um documento",
+        "tags": ["Documents"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Nome do documento pelo ID",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Document"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {}
+        }
+      },
+      "delete": {
+        "summary": "Deleta um document",
+        "description": "Rota para deletar um documento",
+        "tags": ["Documents"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Nome do documento pelo ID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {}
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "Document": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
